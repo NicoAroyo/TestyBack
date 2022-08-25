@@ -1,16 +1,34 @@
 import express from "express";
-import bodyParser from "body-parser";
-import questionsRoutes from "./routes/questions.js";
+import mongoose from "mongoose";
+import env from "dotenv";
+import { router } from "./routes/routes.js";
+import questionsRouter from "./routes/questions.js";
+import quizesRouter from "./routes/quizes.js";
+
+env.config();
+const mongoString = process.env.DB_URL;
+
+mongoose.connect(mongoString);
+const db = mongoose.connection;
+
+db.on("error", (error) => {
+  console.log(error);
+});
+
+db.once("connected", () => {
+  console.log("Database Connected");
+});
 
 const app = express();
 const PORT = 5000;
 
-app.use(bodyParser.json());
+app.use(express.json());
+app.listen(PORT, () => {
+  console.log(`Server Started at http://localhost:${PORT}/`);
+});
 
-app.use("/questions", questionsRoutes);
+app.use("/api", router);
 
-app.get("/", (req, res) => res.send("handling your request..."));
+app.use("/api/questions", questionsRouter);
 
-app.listen(PORT, () =>
-  console.log(`Server running on port: http://localhost:${PORT}`)
-);
+app.use("/api/quizes", quizesRouter);

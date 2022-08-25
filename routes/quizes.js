@@ -1,9 +1,9 @@
 import express from "express";
-import Model from "../model/question.js";
+import Model from "../model/quiz.js";
 
-const questionsRouter = express.Router();
+const quizesRouter = express.Router();
 
-questionsRouter.get("/", async (req, res) => {
+quizesRouter.get("/", async (req, res) => {
   try {
     const data = await Model.find();
     res.json(data);
@@ -12,7 +12,7 @@ questionsRouter.get("/", async (req, res) => {
   }
 });
 
-questionsRouter.get("/:id", async (req, res) => {
+quizesRouter.get("/:id", async (req, res) => {
   try {
     const data = await Model.findById(req.params.id);
     res.json(data);
@@ -21,7 +21,7 @@ questionsRouter.get("/:id", async (req, res) => {
   }
 });
 
-questionsRouter.patch("/:id", async (req, res) => {
+quizesRouter.patch("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const updatedData = req.body;
@@ -33,16 +33,17 @@ questionsRouter.patch("/:id", async (req, res) => {
   }
 });
 
-questionsRouter.post("/", async (req, res) => {
+quizesRouter.post("/", async (req, res) => {
   const data = new Model({
     topicId: req.body.topicId,
-    content: req.body.content,
-    type: req.body.type,
-    displayVertically: req.body.displayVertically,
-    allowExplanation: req.body.allowExplanation,
-    answers: req.body.answers,
-    correctAnswers: req.body.correctAnswers,
-    tags: req.body.tags,
+    language: req.body.language,
+    name: req.body.name,
+    passingGrade: req.body.passingGrade,
+    showAnswers: req.body.showAnswers,
+    instructions: req.body.instructions,
+    passText: req.body.passText,
+    failText: req.body.failText,
+    questions: req.body.questions,
   });
 
   try {
@@ -53,7 +54,7 @@ questionsRouter.post("/", async (req, res) => {
   }
 });
 
-questionsRouter.delete("/:id", async (req, res) => {
+quizesRouter.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await Model.findByIdAndDelete(id);
@@ -63,4 +64,4 @@ questionsRouter.delete("/:id", async (req, res) => {
   }
 });
 
-export default questionsRouter;
+export default quizesRouter;
