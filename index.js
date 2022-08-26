@@ -1,11 +1,10 @@
-
 import express from "express";
-<<<<<<< HEAD
 import mongoose from "mongoose";
 import env from "dotenv";
 import { router } from "./routes/routes.js";
 import questionsRouter from "./routes/questions.js";
 import quizesRouter from "./routes/quizes.js";
+import cors from "cors";
 
 env.config();
 const mongoString = process.env.DB_URL;
@@ -20,29 +19,6 @@ db.on("error", (error) => {
 db.once("connected", () => {
   console.log("Database Connected");
 });
-=======
-import bodyParser from "body-parser";
-import questionsRoutes from "./routes/questions.js";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-
-dotenv.config();
-const  db = async () => {
-  try {
-    await mongoose.connect('mongodb://localhost:27017/test', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      
-    })
-  } catch (error) {
-    console.log(error.message)
-  }
-}
-
-
-
->>>>>>> 8168bea93b121153f5b36afe699ae1f32b919443
 
 const app = express();
 const PORT = 5000;
@@ -51,6 +27,8 @@ app.use(express.json());
 app.listen(PORT, () => {
   console.log(`Server Started at http://localhost:${PORT}/`);
 });
+
+app.use(cors());
 
 app.use("/api", router);
 

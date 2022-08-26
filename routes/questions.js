@@ -3,6 +3,7 @@ import Model from "../model/question.js";
 
 const questionsRouter = express.Router();
 
+//GET ALL http://localhost:5000/api/questions/
 questionsRouter.get("/", async (req, res) => {
   try {
     const data = await Model.find();
@@ -12,6 +13,7 @@ questionsRouter.get("/", async (req, res) => {
   }
 });
 
+//GET ONE http://localhost:5000/api/questions/{id}
 questionsRouter.get("/:id", async (req, res) => {
   try {
     const data = await Model.findById(req.params.id);
@@ -21,6 +23,7 @@ questionsRouter.get("/:id", async (req, res) => {
   }
 });
 
+//PATCH http://localhost:5000/api/questions/{id}
 questionsRouter.patch("/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -33,6 +36,7 @@ questionsRouter.patch("/:id", async (req, res) => {
   }
 });
 
+//POST http://localhost:5000/api/questions/
 questionsRouter.post("/", async (req, res) => {
   const data = new Model({
     topicId: req.body.topicId,
@@ -53,6 +57,7 @@ questionsRouter.post("/", async (req, res) => {
   }
 });
 
+//DELETE http://localhost:5000/api/questions/{id}
 questionsRouter.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;

@@ -3,6 +3,7 @@ import Model from "../model/quiz.js";
 
 const quizesRouter = express.Router();
 
+//GET ALL http://localhost:5000/api/quizes/
 quizesRouter.get("/", async (req, res) => {
   try {
     const data = await Model.find();
@@ -12,6 +13,7 @@ quizesRouter.get("/", async (req, res) => {
   }
 });
 
+//GET ONE http://localhost:5000/api/quizes/{id}
 quizesRouter.get("/:id", async (req, res) => {
   try {
     const data = await Model.findById(req.params.id);
@@ -21,6 +23,7 @@ quizesRouter.get("/:id", async (req, res) => {
   }
 });
 
+//PATCH http://localhost:5000/api/quizes/{id}
 quizesRouter.patch("/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -33,6 +36,7 @@ quizesRouter.patch("/:id", async (req, res) => {
   }
 });
 
+//POST http://localhost:5000/api/quizes/
 quizesRouter.post("/", async (req, res) => {
   const data = new Model({
     topicId: req.body.topicId,
@@ -54,6 +58,7 @@ quizesRouter.post("/", async (req, res) => {
   }
 });
 
+//DELETE http://localhost:5000/api/quizes/
 quizesRouter.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
