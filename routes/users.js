@@ -1,4 +1,4 @@
-import express from "express";
+import express, { json } from "express";
 import Model from "../model/user.js";
 
 const usersRouter = express.Router();
@@ -65,4 +65,19 @@ usersRouter.delete("/:id", async (req, res) => {
   }
 });
 
+usersRouter.get("/bymail/:email", async (req, res)=>{
+  try{
+
+    const email = req.params.email;
+    console.log(email);  
+    const data = await Model.find({email : req.params.email});
+   //const users = await Model.find();
+   //const data = await users.filter((u) => req.params.email != u.email)
+  //  const data = await  Model.findOne(json({email : email}));
+     res.json(data)
+  }
+ catch (error) {
+  res.send(500).json({ message: error.message });
+}
+})
 export default usersRouter;
