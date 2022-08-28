@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 const questionScheme = new mongoose.Schema({
-  topicId: {
+  topic: {
     required: true,
-    type: Number,
+    type: String,
   },
   content: {
     required: true,
@@ -22,10 +22,6 @@ const questionScheme = new mongoose.Schema({
     type: Boolean,
   },
   answers: {
-    required: true,
-    type: Array,
-  },
-  correctAnswers: {
     required: true,
     type: Array,
   },

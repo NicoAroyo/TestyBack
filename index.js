@@ -4,7 +4,7 @@ import env from "dotenv";
 import { router } from "./routes/routes.js";
 import questionsRouter from "./routes/questions.js";
 import quizesRouter from "./routes/quizes.js";
-import usersRouter from "./routes/users";
+// import usersRouter from "./routes/users.js";
 import cors from "cors";
 import topicsRouter from "./routes/topics.js";
 
@@ -39,3 +39,5 @@ app.use("/api/questions", questionsRouter);
 app.use("/api/quizes", quizesRouter);
 
 app.use("/api/topics", topicsRouter);
+
+// app.use("/api/users", usersRouter);

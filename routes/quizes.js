@@ -39,7 +39,7 @@ quizesRouter.patch("/:id", async (req, res) => {
 //POST http://localhost:5000/api/quizes/
 quizesRouter.post("/", async (req, res) => {
   const data = new Model({
-    topicId: req.body.topicId,
+    topic: req.body.topic,
     language: req.body.language,
     name: req.body.name,
     passingGrade: req.body.passingGrade,
