@@ -1,5 +1,5 @@
 import express from "express";
-import Model from "../model/quiz.js";
+import Model from "../model/topic.js";
 
 const topicsRouter = express.Router();
 
