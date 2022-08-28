@@ -74,7 +74,7 @@ quizesRouter.get("/bytopic/:topic", async (req, res)=>{
     const topic = req.params.topic;
     console.log(topic);
    console.log("hi");
-    const data = await Model.find({topic : req.params.topic});
+    const data = await Model.find({topic : req.params.topic.toLowerCase()});
     
      res.json(data);
   }
