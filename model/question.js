@@ -21,11 +21,11 @@ const questionScheme = new mongoose.Schema({
     required: false,
     type: Boolean,
   },
-  answers: {
-    required: true,
-    type: Array,
+  explanation: {
+    required: false,
+    type: String,
   },
-  correctAnswers: {
+  answers: {
     required: true,
     type: Array,
   },

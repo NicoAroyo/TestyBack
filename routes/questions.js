@@ -39,13 +39,13 @@ questionsRouter.patch("/:id", async (req, res) => {
 //POST http://localhost:5000/api/questions/
 questionsRouter.post("/", async (req, res) => {
   const data = new Model({
-    topicId: req.body.topicId,
+    topic: req.body.topic,
     content: req.body.content,
     type: req.body.type,
     displayVertically: req.body.displayVertically,
     allowExplanation: req.body.allowExplanation,
+    explanation: req.body.explanation,
     answers: req.body.answers,
-    correctAnswers: req.body.correctAnswers,
     tags: req.body.tags,
   });
 
