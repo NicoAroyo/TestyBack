@@ -44,6 +44,7 @@ questionsRouter.post("/", async (req, res) => {
     type: req.body.type,
     displayVertically: req.body.displayVertically,
     allowExplanation: req.body.allowExplanation,
+    explanation: req.body.explanation,
     answers: req.body.answers,
     tags: req.body.tags,
   });
