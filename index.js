@@ -4,7 +4,11 @@ import env from "dotenv";
 import { router } from "./routes/routes.js";
 import questionsRouter from "./routes/questions.js";
 import quizesRouter from "./routes/quizes.js";
+<<<<<<< HEAD
 // import usersRouter from "./routes/users.js";
+=======
+import usersRouter from "./routes/users.js";
+>>>>>>> 4b46555ae0ef8d214c0afc2cda7b347c5a4217a5
 import cors from "cors";
 import topicsRouter from "./routes/topics.js";
 
@@ -39,5 +43,9 @@ app.use("/api/questions", questionsRouter);
 app.use("/api/quizes", quizesRouter);
 
 app.use("/api/topics", topicsRouter);
+<<<<<<< HEAD
 
 // app.use("/api/users", usersRouter);
+=======
+app.use("/api/users", usersRouter);
+>>>>>>> 4b46555ae0ef8d214c0afc2cda7b347c5a4217a5
