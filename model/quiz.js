@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 const quizScheme = new mongoose.Schema({
-  topicId: {
+  topic: {
     required: true,
-    type: Number,
+    type: String,
   },
   language: {
     required: true,
