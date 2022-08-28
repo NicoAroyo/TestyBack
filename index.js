@@ -4,6 +4,7 @@ import env from "dotenv";
 import { router } from "./routes/routes.js";
 import questionsRouter from "./routes/questions.js";
 import quizesRouter from "./routes/quizes.js";
+import usersRouter from "./routes/users";
 import cors from "cors";
 
 env.config();
