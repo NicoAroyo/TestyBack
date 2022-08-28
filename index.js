@@ -6,6 +6,7 @@ import questionsRouter from "./routes/questions.js";
 import quizesRouter from "./routes/quizes.js";
 import usersRouter from "./routes/users";
 import cors from "cors";
+import topicsRouter from "./routes/topics.js";
 
 env.config();
 const mongoString = process.env.DB_URL;
@@ -36,3 +37,5 @@ app.use("/api", router);
 app.use("/api/questions", questionsRouter);
 
 app.use("/api/quizes", quizesRouter);
+
+app.use("/api/topics", topicsRouter);
