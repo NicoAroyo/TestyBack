@@ -5,13 +5,14 @@ import { router } from "./routes/routes.js";
 import questionsRouter from "./routes/questions.js";
 import quizesRouter from "./routes/quizes.js";
 
+
 // import usersRouter from "./routes/users.js";
 
 import usersRouter from "./routes/users.js";
-
 import cors from "cors";
 import topicsRouter from "./routes/topics.js";
 import authRouter from "./routes/auth.js";
+import signUpRouter from "./routes/signUp.js";
 
 env.config();
 const mongoString = process.env.DB_URL;
@@ -37,7 +38,7 @@ app.listen(PORT, () => {
 
 app.use(cors());
 
-app.use("/sign-up" , authRouter);
+app.use("/sign-up" , signUpRouter);
 
 app.use("/login", authRouter);
 
