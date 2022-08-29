@@ -67,9 +67,7 @@ usersRouter.delete("/:id", async (req, res) => {
 
 usersRouter.get("/bymail/:email", async (req, res)=>{
   try{
-
     const email = req.params.email;
-    console.log(email);  
     const data = await Model.find({email : req.params.email});
      res.json(data)
   }
