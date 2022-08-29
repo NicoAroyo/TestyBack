@@ -37,6 +37,8 @@ app.listen(PORT, () => {
 
 app.use(cors());
 
+app.use("/sign-up" , authRouter);
+
 app.use("/login", authRouter);
 
 app.use("/api", router);

@@ -3,7 +3,7 @@ import Model from "../model/user.js";
 
 const usersRouter = express.Router();
 
-//GET ALL http://localhost:5000/api/users/
+//GET ALL http://localhost:5000/api/questions/
 usersRouter.get("/", async (req, res) => {
   try {
     const data = await Model.find();
@@ -13,7 +13,7 @@ usersRouter.get("/", async (req, res) => {
   }
 });
 
-//GET ONE http://localhost:5000/api/users/{id}
+//GET ONE http://localhost:5000/api/questions/{id}
 usersRouter.get("/:id", async (req, res) => {
   try {
     const data = await Model.findById(req.params.id);
@@ -23,7 +23,7 @@ usersRouter.get("/:id", async (req, res) => {
   }
 });
 
-//PATCH http://localhost:5000/api/users/{id}
+//PATCH http://localhost:5000/api/questions/{id}
 usersRouter.patch("/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -36,14 +36,14 @@ usersRouter.patch("/:id", async (req, res) => {
   }
 });
 
-//POST http://localhost:5000/api/users/
+//POST http://localhost:5000/api/questions/
 usersRouter.post("/", async (req, res) => {
   const data = new Model({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    isAdmin: req.body.isAdmin,
-    email: req.body.email,
-    password: req.body.password,
+    firstName : req.body.firstName,
+    lastName : req.body.lastName,
+    isAdmin : req.body.isAdmin,
+    email : req.body.email,
+    password : req.body.password
   });
 
   try {
@@ -54,7 +54,7 @@ usersRouter.post("/", async (req, res) => {
   }
 });
 
-//DELETE http://localhost:5000/api/users/{id}
+//DELETE http://localhost:5000/api/questions/{id}
 usersRouter.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -65,15 +65,14 @@ usersRouter.delete("/:id", async (req, res) => {
   }
 });
 
-usersRouter.get("/bymail/:email", async (req, res) => {
-  try {
+usersRouter.get("/bymail/:email", async (req, res)=>{
+  try{
     const email = req.params.email;
-    console.log(email);
-    const data = await Model.find({ email: req.params.email });
-    res.json(data);
-  } catch (error) {
-    res.send(500).json({ message: error.message });
+    const data = await Model.find({email : req.params.email});
+     res.json(data)
   }
-});
-
+ catch (error) {
+  res.send(500).json({ message: error.message });
+}
+})
 export default usersRouter;
