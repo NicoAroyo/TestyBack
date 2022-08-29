@@ -22,11 +22,11 @@ authRouter.post("/", async (req, res) => {
       });
     }
   } catch (error) {
-    res.send(500).json({ message: error.message });
+    res.sendStatus(500).json({ message: error.message });
   }
 });
 
-authRouter.post("/sign-up", async (req, res) => {
+authRouter.post("sign-up/", async (req, res) => {
   const credentials = req.body;
   try {
     const user = await UserModel.findOne({
@@ -43,7 +43,7 @@ authRouter.post("/sign-up", async (req, res) => {
       });
     }
   } catch (error) {
-    res.send(500).json({ message: error.message });
+    res.sendStatus(500).json({ message: error.message });
   }
 });
 
