@@ -11,6 +11,7 @@ import usersRouter from "./routes/users.js";
 
 import cors from "cors";
 import topicsRouter from "./routes/topics.js";
+import authRouter from "./routes/auth.js";
 
 env.config();
 const mongoString = process.env.DB_URL;
@@ -36,6 +37,8 @@ app.listen(PORT, () => {
 
 app.use(cors());
 
+app.use("/login", authRouter);
+
 app.use("/api", router);
 
 app.use("/api/questions", questionsRouter);
@@ -43,7 +46,5 @@ app.use("/api/questions", questionsRouter);
 app.use("/api/quizes", quizesRouter);
 
 app.use("/api/topics", topicsRouter);
-
-// app.use("/api/users", usersRouter);
 
 app.use("/api/users", usersRouter);
