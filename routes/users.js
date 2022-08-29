@@ -71,9 +71,6 @@ usersRouter.get("/bymail/:email", async (req, res)=>{
     const email = req.params.email;
     console.log(email);  
     const data = await Model.find({email : req.params.email});
-   //const users = await Model.find();
-   //const data = await users.filter((u) => req.params.email != u.email)
-  //  const data = await  Model.findOne(json({email : email}));
      res.json(data)
   }
  catch (error) {
