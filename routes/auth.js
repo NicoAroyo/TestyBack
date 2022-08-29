@@ -14,7 +14,7 @@ authRouter.post("/", async (req, res) => {
     console.log(user);
 
     if (!user) {
-      res.status(500).send(Error("Invalid credentials"));
+      res.status(500).send(new Error("Invalid credentials"));
     } else {
       res.send({
         token: "token123",

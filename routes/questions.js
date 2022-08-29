@@ -68,17 +68,14 @@ questionsRouter.delete("/:id", async (req, res) => {
   }
 });
 
-questionsRouter.get("/bytopic/:topic", async (req, res)=>{
-  try{
+questionsRouter.get("/bytopic/:topic", async (req, res) => {
+  try {
     const topic = req.params.topic;
-    console.log(topic);
-   console.log("hi");
-    const data = await Model.find({topic : req.params.topic.toLowerCase()});
-    
-     res.json(data);
+    const data = await Model.find({ topic: topic.toLowerCase() });
+
+    res.json(data);
+  } catch (error) {
+    res.send(500).json({ message: error.message });
   }
- catch (error) {
-  res.send(500).json({ message: error.message });
-}
 });
 export default questionsRouter;
