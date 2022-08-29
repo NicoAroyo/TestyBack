@@ -22,7 +22,7 @@ authRouter.post("/", async (req, res) => {
       });
     }
   } catch (error) {
-    res.sendStatus(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
