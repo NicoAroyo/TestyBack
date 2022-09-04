@@ -13,6 +13,7 @@ import cors from "cors";
 import topicsRouter from "./routes/topics.js";
 import authRouter from "./routes/auth.js";
 import signUpRouter from "./routes/signUp.js";
+import reportsRouter from "./routes/reports.js";
 
 env.config();
 const mongoString = process.env.DB_URL;
@@ -37,6 +38,7 @@ app.listen(PORT, () => {
 });
 
 app.use(cors());
+app.use("/api/reports", reportsRouter);
 
 app.use("/sign-up" , signUpRouter);
 

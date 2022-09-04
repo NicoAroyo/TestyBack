@@ -36,13 +36,15 @@ reportsRouter.patch("/:id", async (req, res) => {
   }
 });
 
-//POST http://localhost:5000/api/questions/
+//POST 
 reportsRouter.post("/", async (req, res) => {
+  console.log(req.params);
+  const dataReq = req.body;
   const data = new Model({
-    user : req.body.user,
-    quizId : req.body.quizId,
-    grade : req.body.grade,
-    date: req.body.date  
+    grade : dataReq.grade,
+    studentId : dataReq.studentId,
+    quizId : dataReq.quizId,
+    date: dataReq.date  
   });
 
   try {

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import user from "./user";
+import user from "./user.js";
 
 const reportScheme = new mongoose.Schema({
     
@@ -8,15 +8,20 @@ const reportScheme = new mongoose.Schema({
         required: true,
         type: Number
     },
-    student: 
+    studentId: 
     {
         required: true,
-        type: user
+        type: String
     },
     quizId : {
 
         required: true,
         type: String
+    },
+    date :{
+        required : false,
+        type: Date,
+        default : Date.now(),
     }
 
 });
