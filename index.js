@@ -6,8 +6,6 @@ import questionsRouter from "./routes/questions.js";
 import quizesRouter from "./routes/quizes.js";
 
 
-// import usersRouter from "./routes/users.js";
-
 import usersRouter from "./routes/users.js";
 import cors from "cors";
 import topicsRouter from "./routes/topics.js";
