@@ -42,7 +42,7 @@ reportsRouter.post("/", async (req, res) => {
   const dataReq = req.body;
   const data = new Model({
     grade : dataReq.grade,
-    studentId : dataReq.studentId,
+    student : dataReq.student,
     quizId : dataReq.quizId,
     date: dataReq.date  
   });

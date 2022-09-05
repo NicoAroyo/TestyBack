@@ -8,10 +8,10 @@ const reportScheme = new mongoose.Schema({
         required: true,
         type: Number
     },
-    studentId: 
+    student: 
     {
         required: true,
-        type: String
+        type: Object
     },
     quizId : {
 
