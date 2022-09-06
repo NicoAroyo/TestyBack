@@ -1,6 +1,6 @@
 import express from "express";
 import Model from "../model/report.js";
-
+import usersRouter from "./users.js";
 const reportsRouter = express.Router();
 
 //GET ALL http://localhost:5000/api/questions/
@@ -76,6 +76,20 @@ reportsRouter.get("/byQuizId/:id", async (req, res) => {
     res.send(500).json({ message: error.message });
   }
 });
+
+reportsRouter.get("/byQnS/:quizId/:studentId", async(req, res) => {
+ try{
+  const {quizId,studentId} = req.params;
+  const data = await Model.find()
+  // console.log("DATA",data);
+  const actual = data.find((r)=>  r.quizId === quizId && r.student._id === studentId );
+  console.log("ACTUAL",actual);
+  res.json(actual); 
+} catch(error) 
+{
+  res.send(500).json({message : error.message})
+}
+})
 
 
 export default reportsRouter;

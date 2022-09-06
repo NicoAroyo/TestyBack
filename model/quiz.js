@@ -28,10 +28,12 @@ const quizScheme = new mongoose.Schema({
   passText: {
     required: false,
     type: String,
+    default : "pass"
   },
   failText: {
     required: false,
     type: String,
+    default : "fail"
   },
   questions: {
     required: true,
