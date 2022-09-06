@@ -19,7 +19,7 @@ quizesRouter.get("/:id", async (req, res) => {
     const data = await Model.findById(req.params.id);
     res.json(data);
   } catch (error) {
-    res.send(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -69,6 +69,7 @@ quizesRouter.delete("/:id", async (req, res) => {
   }
 });
 
+//GET http://localhost:5000/api/quizes/{topic}
 quizesRouter.get("/bytopic/:topic", async (req, res) => {
   try {
     const topic = req.params.topic;

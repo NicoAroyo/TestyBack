@@ -4,8 +4,7 @@ import env from "dotenv";
 import { router } from "./routes/routes.js";
 import questionsRouter from "./routes/questions.js";
 import quizesRouter from "./routes/quizes.js";
-
-
+import activeQuizesRouter from "./routes/activeQuizes.js";
 import usersRouter from "./routes/users.js";
 import cors from "cors";
 import topicsRouter from "./routes/topics.js";
@@ -38,7 +37,7 @@ app.listen(PORT, () => {
 app.use(cors());
 app.use("/api/reports", reportsRouter);
 
-app.use("/sign-up" , signUpRouter);
+app.use("/sign-up", signUpRouter);
 
 app.use("/login", authRouter);
 
@@ -51,3 +50,5 @@ app.use("/api/quizes", quizesRouter);
 app.use("/api/topics", topicsRouter);
 
 app.use("/api/users", usersRouter);
+
+app.use("/api/active-quizes", activeQuizesRouter);

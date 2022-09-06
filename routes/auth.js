@@ -11,7 +11,6 @@ authRouter.post("/", async (req, res) => {
       email: credentials.email,
       password: credentials.password,
     }).exec();
-    console.log(user);
 
     if (!user) {
       res.status(500).send(new Error("Invalid credentials"));
@@ -25,6 +24,5 @@ authRouter.post("/", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-
 
 export default authRouter;

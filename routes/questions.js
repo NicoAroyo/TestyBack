@@ -64,10 +64,11 @@ questionsRouter.delete("/:id", async (req, res) => {
     const data = await Model.findByIdAndDelete(id);
     res.send(`${data} deleted`);
   } catch (error) {
-    res.send(400).json({ message: error.message });
+    res.status(400).json({ message: error.message });
   }
 });
 
+//GET http://localhost:5000/api/questions/bytopic/{topic}
 questionsRouter.get("/bytopic/:topic", async (req, res) => {
   try {
     const topic = req.params.topic;
@@ -75,7 +76,7 @@ questionsRouter.get("/bytopic/:topic", async (req, res) => {
 
     res.json(data);
   } catch (error) {
-    res.send(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 export default questionsRouter;
