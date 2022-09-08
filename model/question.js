@@ -14,7 +14,7 @@ const questionScheme = new mongoose.Schema({
     type: String,
   },
   displayVertically: {
-    required: true,
+    required: false,
     type: Boolean,
   },
   allowExplanation: {

@@ -56,7 +56,7 @@ activeQuizesRouter.post("/", async (req, res) => {
 activeQuizesRouter.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    Model.findByIdAndDelete(id);
+    await Model.findByIdAndDelete(id);
     res.status(200).json({ message: "deleted succesfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });
