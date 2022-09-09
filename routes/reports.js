@@ -82,8 +82,12 @@ reportsRouter.get("/byQnS/:quizId/:studentId", async(req, res) => {
   const {quizId,studentId} = req.params;
   const data = await Model.find()
   // console.log("DATA",data);
-  const actual = data.find((r)=>  r.quizId === quizId && r.student._id === studentId );
+  let actual = data.find((r)=>  r.quizId === quizId && r.student._id === studentId );
   console.log("ACTUAL",actual);
+  if(!actual)
+  {
+    actual = "undefined";
+  } 
   res.json(actual); 
 } catch(error) 
 {
