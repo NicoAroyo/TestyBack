@@ -36,15 +36,16 @@ reportsRouter.patch("/:id", async (req, res) => {
   }
 });
 
-//POST 
+//POST
 reportsRouter.post("/", async (req, res) => {
   console.log(req.params);
   const dataReq = req.body;
   const data = new Model({
-    grade : dataReq.grade,
-    student : dataReq.student,
-    quizId : dataReq.quizId,
-    date: dataReq.date  
+    grade: dataReq.grade,
+    student: dataReq.student,
+    quizId: dataReq.quizId,
+    date: dataReq.date,
+    questions: dataReq.questions,
   });
 
   try {
@@ -69,7 +70,7 @@ reportsRouter.delete("/:id", async (req, res) => {
 reportsRouter.get("/byQuizId/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const data = await Model.find({ id : id });
+    const data = await Model.find({ id: id });
 
     res.json(data);
   } catch (error) {
@@ -77,23 +78,22 @@ reportsRouter.get("/byQuizId/:id", async (req, res) => {
   }
 });
 
-reportsRouter.get("/byQnS/:quizId/:studentId", async(req, res) => {
- try{
-  const {quizId,studentId} = req.params;
-  const data = await Model.find()
-  // console.log("DATA",data);
-  let actual = data.find((r)=>  r.quizId === quizId && r.student._id === studentId );
-  console.log("ACTUAL",actual);
-  if(!actual)
-  {
-    actual = "undefined";
-  } 
-  res.json(actual); 
-} catch(error) 
-{
-  res.send(500).json({message : error.message})
-}
-})
-
+reportsRouter.get("/byQnS/:quizId/:studentId", async (req, res) => {
+  try {
+    const { quizId, studentId } = req.params;
+    const data = await Model.find();
+    // console.log("DATA",data);
+    let actual = data.find(
+      (r) => r.quizId === quizId && r.student._id === studentId
+    );
+    console.log("ACTUAL", actual);
+    if (!actual) {
+      actual = "undefined";
+    }
+    res.json(actual);
+  } catch (error) {
+    res.send(500).json({ message: error.message });
+  }
+});
 
 export default reportsRouter;

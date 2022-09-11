@@ -61,8 +61,8 @@ questionsRouter.post("/", async (req, res) => {
 questionsRouter.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const data = await Model.findByIdAndDelete(id);
-    res.send(`${data} deleted`);
+    await Model.findByIdAndDelete(id);
+    res.status(200).json({ message: "deleted succesfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
